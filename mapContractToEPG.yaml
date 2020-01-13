@@ -1,0 +1,9 @@
+tenant: MCS_Admin
+application: MCS_Admin_Infra
+epg: HyperV_ADMIN_CLU1 
+prov_cont:
+- HyperV_ADMIN_CLU1_To_CLU2
+- HyperV_CLU_To_MCS_ADMIN
+cons_cont:
+- HyperV_ADMIN_CLU1_To_CLU2
+- HyperV_CLU_To_MCS_ADMIN

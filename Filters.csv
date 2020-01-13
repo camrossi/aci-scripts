@@ -1,0 +1,110 @@
+Filter Name, Entries, Protocol, From, To
+arp,,,,
+,arp, unspecified, unspecified, unspecified
+DMZ_Any_To_MCS_Admin,,,,
+,SCOM, tcp, 5723, 5724
+,LDAPS_TCP, tcp, 636, 636
+,Kerberos_UDP, udp, 88, 88
+,HTTP, tcp, http, http
+,HTTPS, tcp, https, https
+,LDAP_UDP, udp, 389, 389
+,AD_Replication_TCP, tcp, 49152, 65535
+,netbios-ns, udp, 137, 138
+,Kerberos_Pass_Change_UDP, udp, 464, 464
+,LDAP_TCP, tcp, 389, 389
+,KMS, tcp, 1688, 1688
+,RPC, tcp, 135, 135
+,Kerberos_TCP, tcp, 88, 88
+,WinRM, tcp, 5985, 5986
+,Kerberos_Pass_Change_TCP, tcp, 464, 464
+,LDAPS_UDP, udp, 636, 636
+,AD_Replication_UDP, udp, 49152, 65535
+,FileSharing_139, tcp, 139, 139
+,GlobalCatalog, tcp, 3268, 3269
+,WSUS, tcp, 8530, 8530
+,WSUS_Secure, tcp, 8531, 8531
+,FileSharing_445, tcp, 445, 445
+est,,,,
+,est, tcp, unspecified, unspecified
+HTTP,,,,
+,HTTP, tcp, http, http
+ICMP,,,,
+,ICMP, icmp, unspecified, unspecified
+OOB,,,,
+,TACACS-TCP, tcp, 49, 49
+,SSH, tcp, 22, 22
+default,,,,
+,default, unspecified, unspecified, unspecified
+MCS_Admin_To_L3_Out,,,,
+,AD_replication, tcp, 49152, 65535
+,netbios-ns, udp, 137, 138
+,LDAPS_UDP, udp, 636, 636
+,Kerberos_UDP, udp, 88, 88
+,CC_To_VMM, tcp, 8100, 8100
+,HTTP, tcp, http, http
+,RDP, tcp, 3389, 3389
+,HTTPS, tcp, https, https
+,LDAP_UDP, udp, 389, 389
+,SMTP, tcp, smtp, smtp
+,SCOM, tcp, 5723, 5724
+,Kerberos_Pass_Change_UDP, udp, 464, 464
+,LDAP_TCP, tcp, 389, 389
+,RPC, tcp, 135, 135
+,Kerberos_TCP, tcp, 88, 88
+,WinRM, tcp, 5985, 5986
+,SSH, tcp, 22, 22
+,Kerberos_Pass_Change_TCP, tcp, 464, 464
+,LDAPS_TCP, tcp, 636, 636
+,WAPUSAGE, tcp, 30022, 30022
+,CC_AppServer, tcp, 8080, 8080
+,CC_Analytics, tcp, 8000, 8000
+,FileSharing_139, tcp, 139, 139
+,GlobalCatalog, tcp, 3268, 3269
+,Group_Policy, udp, 49152, 65535
+,UCS_KVM, tcp, 2068, 2068
+,CC_Analytics_DB, tcp, 8060, 8060
+,FileSharing_445, tcp, 445, 445
+TENANT_TO_KMS,,,,
+,TENANT, tcp, 1688, 1688
+MCS_Admin_CTX_Filters,,,,
+,DNS-tcp, tcp, dns, dns
+,SNMP, udp, 161, 161
+,DNS-udp, udp, dns, dns
+,SNMPTRAP-udp, udp, 162, 162
+,Syslog-tcp, tcp, 514, 514
+,NTP-tcp, tcp, 123, 123
+,ICMP, icmp, unspecified, unspecified
+,WinAD, tcp, 445, 445
+,NTP-udp, udp, 123, 123
+,SNMPTRAP-tcp, tcp, 162, 162
+,Syslog-udp, udp, 514, 514
+Avamar_Server_To_Clients,,,,
+,Avamar_Server_To_Client, tcp, 28002, 28002
+WAPUSAGE,,,,
+,WAPUSAGE, tcp, 30022, 30022
+MCS_Admin_To_DMZ_Any,,,,
+,WinRM, tcp, 5985, 5986
+,SCOM, tcp, 5723, 5724
+,RDP, tcp, 3389, 3389
+KMS,,,,
+,KMS, tcp, 1688, 1688
+HTTPS,,,,
+,HTTPS, tcp, https, https
+CISCO_PORTAL_To_L3Out,,,,
+,SMTP, tcp, smtp, smtp
+Avamar,,,,
+,Redirect_port_for_Avamar_client, tcp, 8181, 8181
+,Client_To_Avamaer_Admin_Server_ClearText, tcp, 28000, 28002
+,Client_To_Avamar_Server, tcp, 27000, 27000
+,NetBios, udp, 137, 137
+,Client_To_Avamaer_Admin_Server_SSL, tcp, 29000, 29000
+icmp,,,,
+,icmp, icmp, unspecified, unspecified
+DMZ_RDG_To_MCS_Admin,,,,
+,VMM_Console, tcp, 8100, 8100
+DMZ_WAP_To_MCS_Admin,,,,
+,SQL_Monitor, udp, 1434, 1434
+,SQL, tcp, 14033, 14033
+,RPC, tcp, 135, 135
+VM_Console,,,,
+,VM_Console, tcp, 2179, 2179

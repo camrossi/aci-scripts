@@ -1,0 +1,12 @@
+tenant: common
+floodunkUcast:
+arpFlood: 'yes'
+unkUcast: 'flood'
+unicastRoute: 'no'
+ctx: airnz
+vlans:
+- 1- 1000
+
+
+
+

@@ -1,0 +1,7 @@
+tenant: common
+application: air-nz
+physical_domain: ACI
+EPG: Name
+vlans:
+- 1 - 1000
+

@@ -1,0 +1,200 @@
+# Usage:
+# -------------------------------------------------------
+#
+# tenant: <tenant>
+# application: <application>
+# epg: <epg>
+# switches: switch IDs for single port/PC ID, for vPC ID-ID
+# mode: [regular | native | untagged]
+# Select EPG
+tenant: PWC_TENANT
+application: PWCProduction_AP
+epgs:
+	- name: V303_EPG
+	  encap: vlan-303
+	  mode: regular
+	- name: V304_EPG
+	  encap: vlan-304
+	  mode: regular
+	- name: V319_EPG
+	  encap: vlan-319
+	  mode: regular
+	- name: V322_EPG
+	  encap: vlan-322
+	  mode: regular
+	- name: V323_EPG
+	  encap: vlan-323
+	  mode: regular
+	- name: V850_EPG
+	  encap: vlan-850
+	  mode: regular
+	- name: V852_EPG
+	  encap: vlan-852
+	  mode: regular
+	- name: V853_EPG
+	  encap: vlan-853
+	  mode: regular
+	- name: V854_EPG
+	  encap: vlan-854
+	  mode: regular
+	- name: V855_EPG
+	  encap: vlan-855
+	  mode: regular
+	- name: V856_EPG
+	  encap: vlan-856
+	  mode: regular
+	- name: V858_EPG
+	  encap: vlan-858
+	  mode: regular
+	- name: V860_EPG
+	  encap: vlan-860
+	  mode: regular
+	- name: V861_EPG
+	  encap: vlan-861
+	  mode: regular
+	- name: V862_EPG
+	  encap: vlan-862
+	  mode: regular
+	- name: V864_EPG
+	  encap: vlan-864
+	  mode: regular
+	- name: V866_EPG
+	  encap: vlan-866
+	  mode: regular
+	- name: V867_EPG
+	  encap: vlan-867
+	  mode: regular
+	- name: V869_EPG
+	  encap: vlan-869
+	  mode: regular
+	- name: V870_EPG
+	  encap: vlan-870
+	  mode: regular
+	- name: V871_EPG
+	  encap: vlan-871
+	  mode: regular
+	- name: V872_EPG
+	  encap: vlan-872
+	  mode: regular
+	- name: V873_EPG
+	  encap: vlan-873
+	  mode: regular
+	- name: V874_EPG
+	  encap: vlan-874
+	  mode: regular
+	- name: V875_EPG
+	  encap: vlan-875
+	  mode: regular
+	- name: V876_EPG
+	  encap: vlan-876
+	  mode: regular
+	- name: V877_EPG
+	  encap: vlan-877
+	  mode: regular
+	- name: V881_EPG
+	  encap: vlan-881
+	  mode: regular
+	- name: V882_EPG
+	  encap: vlan-882
+	  mode: regular
+	- name: V884_EPG
+	  encap: vlan-884
+	  mode: regular
+	- name: V885_EPG
+	  encap: vlan-885
+	  mode: regular
+	- name: V886_EPG
+	  encap: vlan-886
+	  mode: regular
+	- name: V887_EPG
+	  encap: vlan-887
+	  mode: regular
+	- name: V888_EPG
+	  encap: vlan-888
+	  mode: regular
+	- name: V889_EPG
+	  encap: vlan-889
+	  mode: regular
+	- name: V890_EPG
+	  encap: vlan-890
+	  mode: regular
+	- name: V891_EPG
+	  encap: vlan-891
+	  mode: regular
+	- name: V892_EPG
+	  encap: vlan-892
+	  mode: regular
+	- name: V893_EPG
+	  encap: vlan-893
+	  mode: regular
+	- name: V898_EPG
+	  encap: vlan-898
+	  mode: regular
+	- name: V899_EPG
+	  encap: vlan-899
+	  mode: regular
+
+
+#    - name: Camillo-Client
+#      encap: vlan-603
+#      mode: regular
+
+switches: 
+- 1001-2001
+interface_type: vpc
+interfaces:
+- Vblock_Vpc_IFPOL
+- Tier2FwAVpc_IFPOL
+- Tier2FwBVpc_IFPOL
+
+deployment_immediacy: lazy
+mode: regular
+
+
+
+
+#EXAMPLE deploying 2 vpc in 2 EPG vpc:
+#tenant: Camillo
+# application: nVGRE_AppP
+# epgs:
+#     - name: nVGRE_EPG
+#       encap: vlan-602
+#       mode: regular
+#     - name: Camillo-Client
+#       encap: vlan-603
+#       mode: regular
+# 
+# switches: 
+# - 101-102
+# - 103-104
+# interface_type: vpc
+# interfaces:
+# - vpc11_1G
+# - vpc20_10G
+# deployment_immediacy: lazy
+# mode: regular
+
+# #EXAMPLE single: deploying 4 interfaces on 2 switches in 2 EPG
+#tenant: Camillo
+# application: nVGRE_AppP
+# epgs:
+#     - name: nVGRE_EPG
+#       encap: vlan-602
+#       mode: regular
+#     - name: Camillo-Client
+#       encap: vlan-603
+#       mode: regular
+# 
+# switches: 
+# - 101
+# - 102
+# - ...
+# interface_type: individual
+# interfaces:
+# - 1/1
+# - 1/5
+# - 1/20
+# - ...
+# deployment_immediacy: lazy
+# mode: regular
+# 

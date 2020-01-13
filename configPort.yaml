@@ -1,0 +1,65 @@
+# Usage:
+# -------------------------------------------------------
+#
+# tenant: <tenant>
+# application: <application>
+# epg: <epg>
+# optional_args:
+#   bridge_domain: <bridge_domain>
+#   prio: [level1 | level2 | level3]
+#   custom_qos: <custom_qos>
+#   monitoring: <monitoring_policy>
+##  Specify associated domain profiles. You can have any number of associated domain profiles.
+#   associated_domain_profile:
+#   - domain_profile: <domain_profile>we
+#     deployment_immediacy: [ immediate | lazy ]
+#     resolution_immediacy: [ immediate | lazy ]
+#   statically_link: [ True | False ]
+#   leaf:
+#     node_id: <node_id>
+#     encap: <vlan>
+#     deployment_immediacy: [ immediate | lazy ]
+#     mode: [regular | native | untagged]
+#   path:
+#     node_id: <node_id>
+#     eth: <eth_number>
+#     encap: <vlan>
+#     deployment_immediacy: [ immediate | lazy ]
+#     mode: [regular | native | untagged]
+#switch_profile: Leaf2082-SwiPfl
+#switch_selector: Leaf2082-SwiSel
+#interface_selector_profile: Leaf2082-IntSelPfl
+
+switches:
+- 101
+- 102
+interface_type: vpc
+interface_selector:
+  vPCFor-Camillo-IntSel:
+   - 1/25
+interface_policy_group: vPCFor-Camillo-PolGrp
+attachable_entity_profile : Camillo_AEP
+link_level_policy:
+  name: 1G
+cdp_interface_policy:
+  name: Cdp-On-Pol
+lldp_interface_policy:
+  name: Lldp-RxTxOn-Pol
+lacp_policy:
+  name: Lacp-Off-1to16-Pol
+
+#Ignore everything below this line is just a temporary hack till I re-write this script.
+tenant: hack
+application: hack
+epg: hack
+
+optional_args:
+  bridge_domain:
+  prio: unspecified
+  custom_qos:
+  monitoring:
+  statically_link: True
+  path:
+    encap:
+    deployment_immediacy:
+    mode:

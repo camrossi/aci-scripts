@@ -1,0 +1,40 @@
+#Object Name is added automatically to the naming of the object
+Tenant: ACI_FAB1_POD2
+Filter_name: AD
+Entries:
+    - name: RPC
+      FromDestPort: 49152
+      ToDestPort: 65535
+      stateful: 'yes'
+      proto: tcp,udp
+    - name: MSRPG
+      FromDestPort: 445
+      ToDestPort: 445
+      proto: tcp
+      stateful: 'yes'
+    - name: Kerberos
+      FromDestPort: 88
+      ToDestPort: 88
+      proto: tcp,udp
+      stateful: 'yes'
+    - name: LDAP
+      FromDestPort: 389
+      ToDestPort: 389
+      proto: tcp,udp
+      stateful: 'yes'
+    - name: LDAG
+      FromDestPort: 3268
+      ToDestPort: 3268
+      proto: tcp
+      stateful: 'yes'
+    - name: IPC_HTTP
+      FromDestPort: 80
+      ToDestPort: 80
+      proto: tcp
+      stateful: 'yes'
+    - name: KPASS
+      FromDestPort: 464
+      ToDestPort: 464
+      proto: tcp
+      stateful: 'yes'
+

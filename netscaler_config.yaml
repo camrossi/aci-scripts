@@ -1,0 +1,35 @@
+tenant: Richard1
+application: Application1
+epg: EPG-web
+ctrctName: LB
+graphName: One_ARM_LB
+nodeName: ADC
+nsips:
+    - name: nsip1
+      ip: 10.1.11.10
+      mask: 255.255.255.0
+
+routes:
+    - name: route1
+      ip: 10.0.0.0
+      mask: 255.0.0.0
+      gw: 10.1.11.1
+vips:
+    - name: vip-http
+      ip: 10.1.11.100
+      port: 80
+
+sgs:
+    - name: sg-http
+      port: 80
+server_to_sg:
+    - sg-http:
+        - name: s1
+          ip: 10.1.1.10
+        - name: s2
+          ip: 10.1.1.11
+
+sgs_vips:
+    - vip_name: vip-http
+      sg_name: sg-http
+
