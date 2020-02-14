@@ -32,6 +32,8 @@ f.close()
 consumer_epgs = []
 provider_epgs = []
 config_filters = []
+exported_contracts = []
+
 # log into an APIC and create a directory object
 ls = cobra.mit.session.LoginSession(credentials['host'], credentials['user'], credentials['pass'], secure=False, timeout=180)
 md = cobra.mit.access.MoDirectory(ls)
@@ -41,7 +43,7 @@ md.login()
 #Qury the APIC to get Con/Pro/Subjects and inherited EPG info for this contract 
 q1 = cobra.mit.request.DnQuery(args.contract_dn)
 q1.subtree = 'full'
-q1.subtreeClassFilter = 'vzRtCons,vzRtProv,vzSubj,vzInheritedDef,vzRsSubjFiltAtt,vzRtAnyToProv,vzRtAnyToCons'
+q1.subtreeClassFilter = 'vzRtCons,vzRtProv,vzSubj,vzInheritedDef,vzRsSubjFiltAtt,vzRtAnyToProv,vzRtAnyToCons,vzIntDef'
 # Run the query
 contracts = md.query(q1)
 for contract in contracts:
@@ -54,6 +56,15 @@ for contract in contracts:
             consumer_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.RtAnyToProv:
             provider_epgs.append('vzAny ==> ' + child.tDn + '<== vzAny')
+        if type(child) is cobra.model.vz.IntDef: #Exported contracts
+            exported_contracts.append(str(child.ifPKey))
+            q2 = cobra.mit.request.DnQuery(child.dn)
+            q2.subtree = "children"
+            q2.subtreeClassFilter = 'vzConsDef'
+            exp_contracts = md.query(q2)
+            for exp_contract in  exp_contracts:
+                 for child in exp_contract.children:
+                     consumer_epgs.append(child.epgDn)
         if type(child) is cobra.model.vz.InheritedDef:
             for epg in child.children:
                 if type(epg) is cobra.model.vz.ProvDef:
@@ -75,4 +86,12 @@ output = prettytable.PrettyTable(['Consumer EPGs', 'Provider EPGs', 'Ports'])
 output.align = 'l'
 
 output.add_row(['\n'.join(consumer_epgs),'\n'.join(provider_epgs),json.dumps(config_filters, indent=1,sort_keys=True)])
+print(output)
+
+
+output = prettytable.PrettyTable(['Contract', 'Exported Contracts'])
+output.align = 'l'
+
+output.add_row([args.contract_dn, '\n'.join(exported_contracts)])
+
 print(output)
