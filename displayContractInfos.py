@@ -43,7 +43,7 @@ md.login()
 #Qury the APIC to get Con/Pro/Subjects and inherited EPG info for this contract 
 q1 = cobra.mit.request.DnQuery(args.contract_dn)
 q1.subtree = 'full'
-q1.subtreeClassFilter = 'vzRtCons,vzRtProv,vzSubj,vzInheritedDef,vzRsSubjFiltAtt,vzRtAnyToProv,vzRtAnyToCons,vzIntDef'
+q1.subtreeClassFilter = 'vzRtCons,vzRtProv,vzSubj,vzInheritedDef,vzRsSubjFiltAtt,vzRtAnyToProv,vzRtAnyToCons,vzIntDef,vzRtIf'
 # Run the query
 contracts = md.query(q1)
 for contract in contracts:
@@ -56,15 +56,15 @@ for contract in contracts:
             consumer_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.RtAnyToProv:
             provider_epgs.append('vzAny ==> ' + child.tDn + '<== vzAny')
-        if type(child) is cobra.model.vz.IntDef: #Exported contracts
-            exported_contracts.append(str(child.ifPKey))
-            q2 = cobra.mit.request.DnQuery(child.dn)
+        if type(child) is cobra.model.vz.RtIf: #Exported contracts
+            exported_contracts.append(child.tDn)
+            q2 = cobra.mit.request.DnQuery(child.tDn)
             q2.subtree = "children"
-            q2.subtreeClassFilter = 'vzConsDef'
+            q2.subtreeClassFilter = 'vzRtConsIf'
             exp_contracts = md.query(q2)
             for exp_contract in  exp_contracts:
                  for child in exp_contract.children:
-                     consumer_epgs.append(child.epgDn)
+                     consumer_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.InheritedDef:
             for epg in child.children:
                 if type(epg) is cobra.model.vz.ProvDef:
