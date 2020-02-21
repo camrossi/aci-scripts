@@ -48,22 +48,24 @@ q1.subtreeClassFilter = 'vzRtCons,vzRtProv,vzSubj,vzInheritedDef,vzRsSubjFiltAtt
 contracts = md.query(q1)
 for contract in contracts:
     for child in contract.children:
+        #print(child)
         if type(child) is cobra.model.vz.RtCons:
             consumer_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.RtProv:
             provider_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.RtAnyToCons:
-            consumer_epgs.append(child.tDn)
+            consumer_epgs.append('vzAny ==> ' + child.tDn + '<== vzAny')
         if type(child) is cobra.model.vz.RtAnyToProv:
             provider_epgs.append('vzAny ==> ' + child.tDn + '<== vzAny')
         if type(child) is cobra.model.vz.RtIf: #Exported contracts
             exported_contracts.append(child.tDn)
             q2 = cobra.mit.request.DnQuery(child.tDn)
             q2.subtree = "children"
-            q2.subtreeClassFilter = 'vzRtConsIf'
+            q2.subtreeClassFilter = 'vzRtConsIf,vzRtAnyToConsIf'
             exp_contracts = md.query(q2)
             for exp_contract in  exp_contracts:
                  for child in exp_contract.children:
+                     #print(child)
                      consumer_epgs.append(child.tDn)
         if type(child) is cobra.model.vz.InheritedDef:
             for epg in child.children:

@@ -53,7 +53,7 @@ for hostname in apic_controllers:
                 exported_contracts.append(child.tDn)
                 q2 = cobra.mit.request.DnQuery(child.tDn) 
                 q2. subtree = "children"
-                q2. subtreeClassFilter = 'vzRtConsIf'
+                q2. subtreeClassFilter = 'vzRtConsIf,vzRtAnyToConsIf'
                 exp_contracts = md. query(q2)
                 for exp_contract in exp_contracts:
                     for child in exp_contract.children:
