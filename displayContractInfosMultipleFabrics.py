@@ -46,7 +46,7 @@ for hostname in apic_controllers:
             if type(child) is cobra.model.vz.RtProv:
                 provider_epgs.append(child.tDn)
             if type(child) is cobra.model.vz.RtAnyToCons:
-                consumer_epgs.append(child.tDn)
+                consumer_epgs.append('vzAny ==> ' + child. tDn + ' <== vzAny')
             if type(child) is cobra.model.vz.RtAnyToProv:
                 provider_epgs.append('vzAny ==> ' + child. tDn + ' <== vzAny')
             if type(child) is cobra.model.vz.RtIf: #Exported contracts
